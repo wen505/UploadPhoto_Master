@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ulicuplan:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="ulicupload-idea-web.war">
+      <element id="artifact" artifact-name="ulicuplan:war exploded" />
+    </root>
+  </artifact>
+</component>

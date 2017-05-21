@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.FileMetaMapper" >
+  <resultMap id="BaseResultMap" type="com.model.FileMeta" >
+    <id column="file_id" property="fileId" jdbcType="VARCHAR" />
+    <result column="business_no" property="businessNo" jdbcType="VARCHAR" />
+    <result column="file_name" property="fileName" jdbcType="VARCHAR" />
+    <result column="objFile_name" property="objfileName" jdbcType="VARCHAR" />
+    <result column="file_size" property="fileSize" jdbcType="VARCHAR" />
+    <result column="upload_time" property="uploadTime" jdbcType="VARCHAR" />
+    <result column="file_type" property="fileType" jdbcType="VARCHAR" />
+    <result column="file_path" property="filePath" jdbcType="VARCHAR" />
+    <result column="valid" property="valid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    file_id, business_no, file_name, objFile_name, file_size, upload_time, file_type, 
+    file_path, valid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from filemeta
+    where file_id = #{fileId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from filemeta
+    where file_id = #{fileId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.model.FileMeta" >
+    insert into filemeta (file_id, business_no, file_name, 
+      objFile_name, file_size, upload_time, 
+      file_type, file_path, valid
+      )
+    values (#{fileId,jdbcType=VARCHAR}, #{businessNo,jdbcType=VARCHAR}, #{fileName,jdbcType=VARCHAR}, 
+      #{objfileName,jdbcType=VARCHAR}, #{fileSize,jdbcType=VARCHAR}, #{uploadTime,jdbcType=VARCHAR}, 
+      #{fileType,jdbcType=VARCHAR}, #{filePath,jdbcType=VARCHAR}, #{valid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.model.FileMeta" >
+    insert into filemeta
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fileId != null" >
+        file_id,
+      </if>
+      <if test="businessNo != null" >
+        business_no,
+      </if>
+      <if test="fileName != null" >
+        file_name,
+      </if>
+      <if test="objfileName != null" >
+        objFile_name,
+      </if>
+      <if test="fileSize != null" >
+        file_size,
+      </if>
+      <if test="uploadTime != null" >
+        upload_time,
+      </if>
+      <if test="fileType != null" >
+        file_type,
+      </if>
+      <if test="filePath != null" >
+        file_path,
+      </if>
+      <if test="valid != null" >
+        valid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fileId != null" >
+        #{fileId,jdbcType=VARCHAR},
+      </if>
+      <if test="businessNo != null" >
+        #{businessNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null" >
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="objfileName != null" >
+        #{objfileName,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSize != null" >
+        #{fileSize,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadTime != null" >
+        #{uploadTime,jdbcType=VARCHAR},
+      </if>
+      <if test="fileType != null" >
+        #{fileType,jdbcType=VARCHAR},
+      </if>
+      <if test="filePath != null" >
+        #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="valid != null" >
+        #{valid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.model.FileMeta" >
+    update filemeta
+    <set >
+      <if test="businessNo != null" >
+        business_no = #{businessNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null" >
+        file_name = #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="objfileName != null" >
+        objFile_name = #{objfileName,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSize != null" >
+        file_size = #{fileSize,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadTime != null" >
+        upload_time = #{uploadTime,jdbcType=VARCHAR},
+      </if>
+      <if test="fileType != null" >
+        file_type = #{fileType,jdbcType=VARCHAR},
+      </if>
+      <if test="filePath != null" >
+        file_path = #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="valid != null" >
+        valid = #{valid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where file_id = #{fileId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.model.FileMeta" >
+    update filemeta
+    set business_no = #{businessNo,jdbcType=VARCHAR},
+      file_name = #{fileName,jdbcType=VARCHAR},
+      objFile_name = #{objfileName,jdbcType=VARCHAR},
+      file_size = #{fileSize,jdbcType=VARCHAR},
+      upload_time = #{uploadTime,jdbcType=VARCHAR},
+      file_type = #{fileType,jdbcType=VARCHAR},
+      file_path = #{filePath,jdbcType=VARCHAR},
+      valid = #{valid,jdbcType=VARCHAR}
+    where file_id = #{fileId,jdbcType=VARCHAR}
+  </update>
+</mapper>
